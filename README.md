@@ -10,7 +10,7 @@ The aim is to provide a space where students can seek advice, ask questions, and
 - Deployed using GitHub Pages for free hosting
 
 ## Live Demo
-🔗 [View PathFinder Website](https://sakshi-bukka.github.io/PathFinder/)
+🔗 (http://127.0.0.1:5500/stu.html)
 
 ## Technologies Used
 - HTML5 for structure
