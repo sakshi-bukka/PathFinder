@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Clarity - Connect, Learn, Grow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">Career Clarity</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#domains">Domains</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-secondary" onclick="openModal('login')">Login</a>
+                <a href="#" class="btn btn-primary" onclick="openModal('register')">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Your Career Journey Starts Here</h1>
+                <p>Connect with industry experts, get personalized guidance, and unlock your potential with our vibrant mentorship platform</p>
+                <div style="margin-top: 2rem;">
+                    <a href="#" class="btn btn-primary" onclick="openModal('register')" style="font-size: 1.2rem; padding: 1rem 2rem;">Find Your Mentor</a>
+                    <a href="#" class="btn btn-secondary" onclick="openModal('mentor-register')" style="font-size: 1.2rem; padding: 1rem 2rem; margin-left: 1rem;">Become a Mentor</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="domains" class="domains">
+            <div class="container">
+                <h2 class="section-title">Explore Career Domains</h2>
+                <div class="domain-grid">
+                    <div class="domain-card" onclick="showMentors('technology')">
+                        <span class="domain-icon">💻</span>
+                        <h3>Technology & Software</h3>
+                        <p>Web Development, AI/ML, Data Science, Cybersecurity, Mobile Apps</p>
+                        <div class="mentor-count">145 Active Mentors</div>
+                    </div>
+                    <div class="domain-card" onclick="showMentors('business')">
+                        <span class="domain-icon">💼</span>
+                        <h3>Business & Finance</h3>
+                        <p>Marketing, Finance, Consulting, Entrepreneurship, Sales</p>
+                        <div class="mentor-count">98 Active Mentors</div>
+                    </div>
+                    <div class="domain-card" onclick="showMentors('healthcare')">
+                        <span class="domain-icon">🏥</span>
+                        <h3>Healthcare & Medicine</h3>
+                        <p>Medicine, Nursing, Public Health, Medical Research</p>
+                        <div class="mentor-count">76 Active Mentors</div>
+                    </div>
+                    <div class="domain-card" onclick="showMentors('engineering')">
+                        <span class="domain-icon">⚙️</span>
+                        <h3>Engineering</h3>
+                        <p>Mechanical, Civil, Electrical, Chemical, Aerospace</p>
+                        <div class="mentor-count">112 Active Mentors</div>
+                    </div>
+                    <div class="domain-card" onclick="showMentors('creative')">
+                        <span class="domain-icon">🎨</span>
+                        <h3>Creative & Design</h3>
+                        <p>Graphic Design, UI/UX, Photography, Video Production</p>
+                        <div class="mentor-count">67 Active Mentors</div>
+                    </div>
+                    <div class="domain-card" onclick="showMentors('education')">
+                        <span class="domain-icon">📚</span>
+                        <h3>Education & Research</h3>
+                        <p>Teaching, Academic Research, Educational Technology</p>
+                        <div class="mentor-count">54 Active Mentors</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Platform Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">💬</span>
+                        <h3>Free Chat & Video Calls</h3>
+                        <p>Connect with mentors through instant messaging and video conferencing - completely free</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3>Domain-Specific Matching</h3>
+                        <p>Find mentors who specialize in your exact field of interest</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📅</span>
+                        <h3>Flexible Scheduling</h3>
+                        <p>Book sessions based on mentor availability that fits your schedule</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📈</span>
+                        <h3>Career Resources</h3>
+                        <p>Access curated resources, job boards, and career development materials</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🌟</span>
+                        <h3>Mentor Reviews</h3>
+                        <p>Read reviews and ratings to find the perfect mentor for your journey</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔒</span>
+                        <h3>Secure Platform</h3>
+                        <p>Your conversations and data are protected with enterprise-grade security</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentor Dashboard -->
+        <section id="mentor-dashboard" class="dashboard">
+            <div class="container">
+                <h2 class="section-title">Available Mentors</h2>
+                <div class="filter-bar">
+                    <select id="filterExperience" onchange="filterMentors()">
+                        <option value="">All Experience Levels</option>
+                        <option value="junior">3-5 years</option>
+                        <option value="mid">5-10 years</option>
+                        <option value="senior">10+ years</option>
+                    </select>
+                    <select id="filterAvailability" onchange="filterMentors()">
+                        <option value="">All Availability</option>
+                        <option value="now">Available Now</option>
+                        <option value="today">Available Today</option>
+                        <option value="week">This Week</option>
+                    </select>
+                    <input type="text" id="searchMentors" placeholder="Search mentors..." onkeyup="searchMentors()">
+                </div>
+                <div class="mentor-grid" id="mentorGrid">
+                    <!-- Mentors will be populated here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login')">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Welcome Back!</h2>
+            <form onsubmit="login(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Don't have an account? <a href="#" onclick="switchModal('login', 'register')" style="color: #e73c7e;">Sign up here</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('register')">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Join Career Clarity</h2>
+            <form onsubmit="register(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required>
+                </div>
+                <div class="form-group">
+                    <label>I am a:</label>
+                    <select required>
+                        <option value="">Select Role</option>
+                        <option value="student">Student seeking guidance</option>
+                        <option value="professional">Working professional</option>
+                        <option value="career-changer">Career changer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Primary Interest</label>
+                    <select required>
+                        <option value="">Select Domain</option>
+                        <option value="technology">Technology & Software</option>
+                        <option value="business">Business & Finance</option>
+                        <option value="healthcare">Healthcare & Medicine</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="creative">Creative & Design</option>
+                        <option value="education">Education & Research</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Create Account</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Already have an account? <a href="#" onclick="switchModal('register', 'login')" style="color: #e73c7e;">Login here</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Mentor Registration Modal -->
+    <div id="mentorRegisterModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('mentor-register')">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Become a Mentor</h2>
+            <form onsubmit="registerMentor(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Years of Experience</label>
+                    <input type="number" min="2" required>
+                </div>
+                <div class="form-group">
+                    <label>Expertise Domain</label>
+                    <select required>
+                        <option value="">Select Domain</option>
+                        <option value="technology">Technology & Software</option>
+                        <option value="business">Business & Finance</option>
+                        <option value="healthcare">Healthcare & Medicine</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="creative">Creative & Design</option>
+                        <option value="education">Education & Research</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Current Position</label>
+                    <input type="text" placeholder="e.g., Senior Software Engineer at Google" required>
+                </div>
+                <div class="form-group">
+                    <label>Available Hours (per week)</label>
+                    <input type="number" min="1" max="20" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Apply as Mentor</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Interface -->
+    <div id="chatInterface" class="chat-interface">
+        <div class="chat-header">
+            <div>
+                <strong id="chatMentorName">Sarah Chen</strong>
+                <div style="font-size: 0.8rem; opacity: 0.9;">Senior Software Engineer</div>
+            </div>
+            <div>
+                <button onclick="startVideoCall()" style="background: none; border: none; color: white; margin-right: 1rem; cursor: pointer; font-size: 1.2rem;">📹</button>
+                <button onclick="closeChat()" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.5rem;">&times;</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message received">Hi! I'm excited to help you with your career journey. What specific area would you like to discuss?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Video Call Modal -->
+    <div id="videoCallModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close" onclick="endVideoCall()">&times;</span>
+            <div class="video-call-container">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Video Call with <span id="videoCallMentorName">Sarah Chen</span></h3>
+                <div class="video-placeholder">
+                    <div style="background: #333; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                        📹 Video call would start here<br>
+                        <small style="opacity: 0.7;">This is a demo - integrate with WebRTC for real video calls</small>
+                    </div>
+                </div>
+                <div class="video-controls" style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-secondary" onclick="toggleMute()" id="muteBtn">🔇 Mute</button>
+                    <button class="btn btn-secondary" onclick="toggleVideo()" id="videoBtn">📹 Stop Video</button>
+                    <button class="btn btn-primary" onclick="endVideoCall()" style="background: #dc3545;">📞 End Call</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
